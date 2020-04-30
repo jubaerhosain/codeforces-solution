@@ -8,25 +8,21 @@ public class Solution{
         int k = scan.nextInt();
         
         Queue<Integer> queue = new ArrayDeque<Integer>();
-        
+        Stack<Integer> stack = new Stack<Integer>();
         for(int i = 1; i <= n; i++){
             int input = scan.nextInt();
             
             if(!queue.contains(input)){
                 queue.add(input);
+                stack.add(input);
                 
                 if(queue.size() > k){
+                    int val = queue.peek();
                     queue.remove();
+                    stack.remove(val);
                 }
             }
         }
-        
-        //Reverse queue
-        Stack<Integer> stack = new Stack<>(); 
-        while (!queue.isEmpty()) { 
-            stack.add(queue.peek()); 
-            queue.remove(); 
-        } 
         
         System.out.println(stack.size());
         while (!stack.isEmpty()) { 
